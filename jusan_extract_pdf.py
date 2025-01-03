@@ -1,10 +1,5 @@
-from datetime import datetime
 import re
 from PyPDF2 import PdfReader
-
-
-# Specify the path to the PDF file
-pdf_path = "C:\\Users\\me\\Downloads\\Telegram Desktop\\Выписка по карте.pdf"
 
 def extract_text_from_pdf(pdf_path):
     reader = PdfReader(pdf_path)
@@ -47,9 +42,18 @@ def extract_text_from_pdf(pdf_path):
                     "description": description.strip()
                 })
     return transactions
+# from dotenv import load_dotenv
 
-pdf_data = extract_text_from_pdf(pdf_path)
+# import os
 
-for line in pdf_data:
-    print(line)
+# # Load environment variables from the .env file
+# load_dotenv()
+
+# # Specify the path to the PDF file  
+# JUSAN_PDF_PATH = os.getenv("JUSAN_PDF_PATH")
+
+# pdf_data = extract_text_from_pdf(JUSAN_PDF_PATH)
+
+# for line in pdf_data:
+#     print(line)
 
