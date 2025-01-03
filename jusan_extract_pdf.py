@@ -18,11 +18,8 @@ def extract_text_from_pdf(pdf_path):
             for line in lines:
                 if(re.search(date_pattern, line)):
                     if(date):
-                        # transactions.append({
-                        #     "date": date,
-                        #     "amount": amount,
-                        #     "description": description.strip()
-                        # })                        
+                        if('Покупка' in description):
+                            amount = '-' + amount
                         transactions.append([date, amount, description.strip()])
                         date = ""
                         amount = ""
@@ -37,12 +34,8 @@ def extract_text_from_pdf(pdf_path):
                             description += line
             
             if(date):
-                # transactions.append({
-                #     "date": date,
-                #     "amount": amount,
-                #     "description": description.strip()
-                # })
-                
+                if('Покупка' in description):
+                    amount = '-' + amount
                 transactions.append([date, amount, description.strip()])
     return transactions
 # from dotenv import load_dotenv
